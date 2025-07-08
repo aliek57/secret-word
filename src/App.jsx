@@ -14,11 +14,23 @@ const stages = [
 function App() {
   const [stage, setStage] = useState(stages[0].name);
 
+  const startGame = () => {
+    setStage(stages[1].name);
+  }
+
+  const verifyLetter = () => {
+    setStage(stages[2].name);
+  }
+
+  const retry = () => {
+    setStage(stages[0].name);
+  }
+
   return (
     <div className='App'>
-      {stage === 'start' && <Start />}
-      {stage === 'game' && <Game />}
-      {stage === 'end' && <End />}
+      {stage === 'start' && <Start startGame={startGame}/>}
+      {stage === 'game' && <Game verifyLetter={verifyLetter}/>}
+      {stage === 'end' && <End retry={retry}/>}
     </div>
   )
 }

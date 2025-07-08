@@ -1,8 +1,11 @@
 import './End.css'
 
-const End = () => {
+const End = ({retry}) => {
   return (
-    <div>End</div>
+    <div>
+      <h1>Fim de jogo</h1>
+      <button onClick={retry}>Resetar jogo</button>
+    </div>
   )
 }
 
