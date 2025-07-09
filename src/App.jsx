@@ -67,10 +67,22 @@ function App() {
       setGuesses((actualGuesses) => actualGuesses - 1);
     }
   }
-  console.log(`Letras erradas: ${wrongLetters}`);
-  console.log(`Letras certas: ${guessedLetters}`);
+
+  const clearLettersStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  };
+  
+  useEffect(() => {
+    if (guesses <= 0) {
+      clearLettersStates();
+      setStage(stages[2].name);
+    }
+  }, [guesses])
 
   const retry = () => {
+    setGuesses(5);
+    setScore(0);
     setStage(stages[0].name);
   }
 
